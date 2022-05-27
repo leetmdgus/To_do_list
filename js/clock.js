@@ -1,5 +1,5 @@
-const h1 = document.querySelector('#clock h1');
-const h2 = document.querySelector('#clock h2');
+const clockDate = document.querySelector('#clock h1');
+const clockTime = document.querySelector('#clock h2');
 
 
 function getClock()
@@ -9,13 +9,13 @@ function getClock()
   const currentMonth = date.getMonth();
   const currentDate = date.getDate();
 
-  h1.innerText = `${currentYear}-${currentMonth}-${currentDate}`;
+  clockDate.innerText = `${currentYear}-${currentMonth}-${currentDate}`;
   
   const currentHours = String(date.getHours()).padStart(2,"0");
   const currentMinutes = String(date.getMinutes()).padStart(2,"0");
   const currentSeconds = String(date.getSeconds()).padStart(2,"0");
   
-  h2.innerText = `${currentHours}:${currentMinutes}:${currentSeconds}`;
+  clockTime.innerText = `${currentHours}:${currentMinutes}:${currentSeconds}`;
 }
 
 getClock();

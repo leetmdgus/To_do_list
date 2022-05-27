@@ -1,21 +1,18 @@
-const span =document.querySelector('#d-day span');
-const input = document.querySelector('#d-day input')
+const dDayNum =document.querySelector('#d-day span');
+const inputYear = document.querySelector('#year');
+const inputMonth = document.querySelector('#month');
+const inputDate = document.querySelector('#date');
 
-function diff(date1,date2,operator){
-  let timeDiff;
-  let dDay;
-  timeDiff = date1-date2;
-  dDay = timeDiff / 1000 / 60 / 60 / 24;
-  dDay = Math.floor(dDay);
-  span.innerText = `${operator}${dDay}`;
+function dDayCalculator(date1,date2,operator){
+  const timeDiff = date1-date2;
+  const dDay = Math.floor(timeDiff / 1000 / 60 / 60 / 24);
+
+  dDayNum.innerText = `${operator}${dDay}`;
 }
 
 function getDday(event)
 {
-  event.preventDefault();const inputYear = document.querySelector('#year');
-  const inputMonth = document.querySelector('#month');
-  const inputDate = document.querySelector('#date');
-  
+  event.preventDefault();  
   const year = Number(inputYear.value);
   const month = Number(inputMonth.value)-1;
   const date = Number(inputDate.value);
@@ -24,9 +21,9 @@ function getDday(event)
   const nowDate = Date.now();
   
   if(userDate>=nowDate){
-    diff(userDate,nowDate,'-');
+    dDayCalculator(userDate,nowDate,'-');
   } else if(userDate<nowDate){
-    diff(nowDate,userDate,'+');
+    dDayCalculator(nowDate,userDate,'+');
   }
 }
 
